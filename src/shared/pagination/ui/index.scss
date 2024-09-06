@@ -1,0 +1,28 @@
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  margin: 20px 0;
+
+  &-Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: var(--radius-small);
+    border: 1px solid var(--color-accent);
+    cursor: pointer;
+
+    transition: var(--transition-primary);
+
+    &:hover,
+    &_active {
+      color: var(--color-text-white);
+      background-color: var(--color-accent);
+    }
+  }
+}

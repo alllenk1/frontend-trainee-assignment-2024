@@ -1,4 +1,4 @@
-@import "@styles/declarations/mixins";
+@import '@styles/declarations/mixins';
 
 .Genre {
   width: fit-content;
@@ -13,7 +13,7 @@
   @include font(14px, var(--color-accent), 300);
 
   &:hover {
-    color: var(--color-text-secondary);
+    color: var(--color-text-white);
     background-color: var(--color-accent);
   }
 }
