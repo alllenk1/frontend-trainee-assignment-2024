@@ -16,7 +16,7 @@ export const buildPlugins = ({
             chunkFilename: 'css/[name].[contenthash:8].css'
         }),
         new Dotenv({
-            path: '/Users/allenk/Desktop/Avito/project/.env',
+            path: '.env',
             safe: true
         }),
         new webpack.DefinePlugin({

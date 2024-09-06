@@ -1,0 +1,16 @@
+:root {
+  --color-text-primary: #252b36;
+  --color-text-secondary: #ffffff;
+  --color-card-bg: #f7f8fa;
+  --color-card-bg-hover: #ebeef4;
+  --color-card-border: #e4e5ed;
+  --color-accent: #6949ff;
+
+  --radius-small: 16px;
+  --radius-big: 34px;
+
+  --transition-primary: 0.25s;
+
+  --color-skeleton-bg: var(--color-card-bg);
+  --color-skeleton-content: #e7ebf2;
+}

@@ -1,11 +1,15 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { App } from '../components/App';
+import App from './app/index';
 
-const root = document.getElementById('root');
+const container = document.getElementById('root');
+const root = createRoot(container as HTMLDivElement);
 
-if (!root) throw new Error('Foot not found');
+const compose = (
+    <StrictMode>
+        <App />
+    </StrictMode>
+);
 
-const container = createRoot(root);
-
-container.render(<App />);
+root.render(compose);

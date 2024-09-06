@@ -21,7 +21,7 @@ export const buildWebpack = (options: BuildOptions): webpack.Configuration => {
         module: {
             rules: buildLoaders()
         },
-        resolve: buildResolvers(),
+        resolve: buildResolvers({ paths }),
         devtool: false,
         devServer: buildDevServer()
     };

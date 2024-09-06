@@ -1,0 +1,12 @@
+body {
+  min-height: 100vh;
+
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--color-text-primary);
+
+  background: var(--color-page-bg);
+}
+
+#root {
+  min-height: inherit;
+}
