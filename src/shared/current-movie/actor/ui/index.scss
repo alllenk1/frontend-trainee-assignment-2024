@@ -1,0 +1,31 @@
+@import '@styles/declarations/mixins';
+
+// .Actor {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 10px;
+
+//   &-Photo {
+//     max-width: 150px;
+//     height: auto;
+//   }
+
+//   &-Name {
+//     text-align: center;
+//     @include font(16px, var(--color-text-primary), 600);
+//   }
+// }
+
+.Actor-Photo {
+  width: 150px;
+  height: 237px;
+  object-fit: cover;
+
+  margin-bottom: 10px;
+}
+
+.Actor-Name {
+  text-align: center;
+
+  @include font(14px, var(--color-text-primary), 600);
+}

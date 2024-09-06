@@ -1,9 +1,9 @@
-import { StrictMode, useEffect, useState } from 'react';
+import { StrictMode } from 'react';
 import { PagesComposition } from '@/pages';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import MoviesListPage from '@/pages/movies-list';
-import CurrentMoviePage from '@/pages/current-movie';
+import { MoviesListPage } from '@/pages/movies-list';
+import { CurrentMoviePage } from '@/pages/current-movie';
 
 import './styles/index.scss';
 
@@ -14,7 +14,7 @@ function App() {
       element: <MoviesListPage />
     },
     {
-      path: 'movie',
+      path: '/movie/:movieId',
       element: <CurrentMoviePage />
     }
   ]);

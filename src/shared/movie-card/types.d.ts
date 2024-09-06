@@ -8,6 +8,7 @@ export type MoviesRatings = {
 };
 
 export type MovieProps = {
+  id: number;
   poster: any;
   name: string;
   shortDescription: string;

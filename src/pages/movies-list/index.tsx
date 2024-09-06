@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import type { MovieProps } from '@/shared/movie-card/types';
 import { MoviesList } from '@/shared/movies-list';
 
-export default function MoviesListPage() {
+export function MoviesListPage() {
   const [movies, setMovies] = useState<MovieProps[]>([]);
 
   const options = {
@@ -25,10 +25,5 @@ export default function MoviesListPage() {
       .catch((err) => console.error(err));
   }, []);
 
-  return (
-    <>
-      <Link to="/movie">Перейти к фильму</Link>
-      {movies.length > 0 && <MoviesList movies={movies} />}
-    </>
-  );
+  return <>{movies.length > 0 && <MoviesList movies={movies} />}</>;
 }

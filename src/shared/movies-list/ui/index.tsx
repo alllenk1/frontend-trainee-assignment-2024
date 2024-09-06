@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { cn } from '@bem-react/classname';
 
 import { MovieCard } from '@/shared/movie-card';
@@ -14,6 +13,7 @@ export const MoviesList = ({ movies }: MoviesListProps) => {
     <div className={cnMoviesList('')}>
       {movies.map((movie: MovieProps) => (
         <MovieCard
+          id={movie.id}
           key={movie.name}
           name={movie.name}
           shortDescription={movie.shortDescription}

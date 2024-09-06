@@ -1,0 +1,62 @@
+@import '@styles/declarations/mixins', '@splidejs/react-splide/css';
+
+.CurrentMovie {
+  display: flex;
+  column-gap: 30px;
+
+  width: 60%;
+
+  margin: 0 auto;
+}
+
+.CurrentMovie-Promo {
+  width: 30%;
+
+  .CurrentMovie-Poster,
+  .CurrentMovie-Trailer {
+    width: 100%;
+  }
+}
+
+.CurrentMovie-Info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  width: 70%;
+
+  .CurrentMovie-NameAndYear {
+    @include font(32px, var(--color-text-primary), 600);
+  }
+
+  .CurrentMovie-AltNameAndRaiting {
+    @include font(16px, var(--color-text-secondary), 400);
+  }
+}
+
+.CurrentMovie-Splide {
+  position: relative;
+
+  width: 60%;
+  margin: 0 auto;
+
+  .Splide-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 10px;
+  }
+
+  .Splide-page {
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+    background-color: #eceef1;
+
+    &[aria-selected='true'] {
+      background-color: black;
+    }
+  }
+}

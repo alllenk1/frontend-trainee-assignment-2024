@@ -33,6 +33,8 @@
     },
     "dependencies": {
         "@bem-react/classname": "^1.6.0",
+        "@splidejs/react-splide": "^0.7.12",
+        "@splidejs/splide-extension-auto-scroll": "^0.5.3",
         "dotenv": "16.4.5",
         "process": "0.11.10",
         "react": "18.3.1",
