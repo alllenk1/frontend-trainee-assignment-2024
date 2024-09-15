@@ -14,4 +14,5 @@ export type MovieProps = {
   shortDescription: string;
   rating?: MoviesRatings;
   genres?: MoviesGenre[];
+  year?: number;
 };

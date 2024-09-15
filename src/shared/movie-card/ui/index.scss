@@ -46,4 +46,8 @@
 
     gap: 5px;
   }
+
+  @media (max-width: 460px) {
+    max-width: 100%;
+  }
 }

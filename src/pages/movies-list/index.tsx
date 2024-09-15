@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
+import { cn } from '@bem-react/classname';
 import { Link } from 'react-router-dom';
 
 import type { MovieProps } from '@/shared/movie-card/types';
 import { MoviesList } from '@/shared/movies-list';
 import { Pagination } from '@/shared/pagination';
+import { FilterForm } from '@/shared/filter-form';
+
+import './index.scss';
 
 export function MoviesListPage() {
+  const cnMoviesListPage = cn('MoviesListPage');
+
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -36,8 +42,11 @@ export function MoviesListPage() {
   };
 
   return (
-    <>
-      {movies.length > 0 && <MoviesList movies={movies} />}
+    <div className={cnMoviesListPage('')}>
+      <div className={cnMoviesListPage('Content')}>
+        <FilterForm />
+        {movies.length > 0 && <MoviesList movies={movies} />}
+      </div>
       {totalPages > 0 && (
         <Pagination
           totalPages={totalPages}
@@ -45,6 +54,6 @@ export function MoviesListPage() {
           onPageChange={handlePageChange}
         />
       )}
-    </>
+    </div>
   );
 }
