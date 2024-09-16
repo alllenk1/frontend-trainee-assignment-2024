@@ -1,5 +1,10 @@
-export type SearchProps = {
-  query: string;
+import { FilterParamsType } from '@/shared/movie-card/types';
 
-  onChange: (value: string) => void;
+export type FilterItemType = {
+    name: string;
+    value: string;
+};
+
+export type FilterFormProps = {
+    onChange: (value: FilterParamsType) => void;
 };

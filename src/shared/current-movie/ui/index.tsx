@@ -94,7 +94,7 @@ export const CurrentMovie = ({
       >
         {persons.length > 0 &&
           persons.slice(0, 12).map((person) => (
-            <SplideSlide>
+            <SplideSlide key={person.name}>
               <Actor photo={person.photo} name={person.name} />
             </SplideSlide>
           ))}

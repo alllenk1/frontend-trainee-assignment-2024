@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import { filterApi } from '@/shared/filter-form/api';
+import { baseApi } from '@/shared/api';
 
 export const store = configureStore({
   reducer: {
-    [filterApi.reducerPath]: filterApi.reducer
+    [baseApi.reducerPath]: baseApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(filterApi.middleware)
+    getDefaultMiddleware().concat(baseApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

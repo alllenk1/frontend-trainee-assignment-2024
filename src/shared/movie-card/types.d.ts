@@ -16,3 +16,13 @@ export type MovieProps = {
   genres?: MoviesGenre[];
   year?: number;
 };
+
+export type MoviesResponseType = {
+  docs: MovieProps[];
+  pages: number;
+};
+
+export type FilterParamsType = {
+  option: string;
+  value: string;
+};

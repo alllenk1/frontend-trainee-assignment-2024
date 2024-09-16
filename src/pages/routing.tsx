@@ -1,6 +1,3 @@
-import { ReactNode, lazy } from 'react';
-import { Navigate, Route } from 'react-router-dom';
-
 // import { ProtectedRoute } from '@/entities/session';
 
 // import { SentryRoutes } from '@/shared/libs';
