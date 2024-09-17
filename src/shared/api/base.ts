@@ -18,7 +18,7 @@ export const baseApi = createApi({
             MoviesResponseType,
             {
                 currentPage?: number;
-                limit?: number;
+                limit?: string;
                 params?: FilterParamsType[];
             }
         >({

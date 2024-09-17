@@ -5,6 +5,7 @@ import { cn } from '@bem-react/classname';
 import { useSearchMoviesQuery } from '@/shared/api';
 import { MovieProps } from '@/shared/movie-card/types';
 
+import { Input } from '../../input';
 import './index.scss';
 
 export const Search = () => {
@@ -27,20 +28,17 @@ export const Search = () => {
         };
     }, [searchQuery]);
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeSearchQuery = (event: ChangeEvent<HTMLInputElement>) => {
         setSearchQuery(event.target.value);
     };
 
     return (
         <div className={cnSearch('')}>
-            <label className={cnSearch('Label')} htmlFor="search" />
-            <input
-                className={cnSearch('Input')}
-                id="search"
-                name="search"
+            <Input
+                type="search"
                 placeholder="Название фильма или сериала"
                 value={searchQuery}
-                onChange={handleChange}
+                onChange={handleChangeSearchQuery}
             />
             {debouncedQuery.trim().length > 0 && (
                 <div className={cnSearch('Results')}>

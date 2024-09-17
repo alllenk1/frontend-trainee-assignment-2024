@@ -3,13 +3,17 @@ import { cn } from '@bem-react/classname';
 
 import { useSearchOptionsQuery } from '@/shared/api';
 
-import type { FilterFormProps, FilterItemType } from '../types';
 import { Search } from '../search';
 import { Select } from '../select';
+import { Input } from '../input';
+import type { FilterFormProps, FilterItemType } from '../types';
 import { defaultOptions } from '../lib';
 import './index.scss';
 
-export const FilterForm = ({ onChange }: FilterFormProps) => {
+export const FilterForm = ({
+    onChangeParams,
+    onChangeLimit
+}: FilterFormProps) => {
     const cnFilterForm = cn('FilterForm');
 
     const [options, setOptions] = useState(defaultOptions);
@@ -48,21 +52,22 @@ export const FilterForm = ({ onChange }: FilterFormProps) => {
             <Select
                 type="genres.name"
                 placeholder="Жанр"
-                onChange={onChange}
+                onChange={onChangeParams}
                 options={options['genres.name']}
             />
             <Select
                 type="countries.name"
                 placeholder="Страна"
-                onChange={onChange}
+                onChange={onChangeParams}
                 options={options['countries.name']}
             />
             <Select
                 type="ageRating"
                 placeholder="Возрастной рейтинг"
                 options={options.ageRating}
-                onChange={onChange}
+                onChange={onChangeParams}
             />
+            <Input placeholder="Фильмов на странице" onChange={onChangeLimit} />
         </form>
     );
 };

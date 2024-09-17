@@ -1,3 +1,5 @@
+import { ChangeEvent } from 'react';
+
 import { FilterParamsType } from '@/shared/movie-card/types';
 
 export type FilterItemType = {
@@ -6,5 +8,6 @@ export type FilterItemType = {
 };
 
 export type FilterFormProps = {
-    onChange: (value: FilterParamsType) => void;
+    onChangeParams: (value: FilterParamsType) => void;
+    onChangeLimit: (value: ChangeEvent<HTMLInputElement>) => void;
 };
