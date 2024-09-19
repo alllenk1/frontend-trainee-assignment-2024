@@ -1,53 +1,54 @@
 @import '@styles/declarations/mixins';
 
 .MovieCard {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  max-width: 200px;
-  height: 100%;
-
-  padding: 15px;
-
-  border-radius: var(--radius-big);
-  background-color: var(--color-card-bg);
-  border: 1px solid var(--color-card-border);
-  box-shadow: 3px 3px 25px var(--color-card-border);
-
-  transition: var(--transition-primary);
-
-  &:hover {
-    cursor: pointer;
-    background-color: var(--color-card-bg-hover);
-  }
-
-  &-Poster {
-    width: 100%;
-    height: auto;
-    min-height: 252px;
-
-    margin: 0 auto;
-
-    border-radius: var(--radius-small);
-  }
-
-  &-MainInfo {
-    @include font(16px, var(--color-text-primary), 600);
-  }
-
-  &-Description {
-    @include font(12px, var(--color-text-primary), 400);
-  }
-
-  &-Genres {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
 
-    gap: 5px;
-  }
+    max-width: 200px;
+    height: 100%;
 
-  @media (max-width: 460px) {
-    max-width: 100%;
-  }
+    padding: 15px;
+
+    border-radius: var(--radius-big);
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    box-shadow: 3px 3px 25px var(--color-card-border);
+
+    transition: var(--transition-primary);
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--color-card-bg-hover);
+    }
+
+    &-Poster {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 252px;
+
+        margin: 0 auto;
+
+        border-radius: var(--radius-small);
+    }
+
+    &-MainInfo {
+        @include font(16px, var(--color-text-primary), 600);
+    }
+
+    &-Description {
+        @include font(12px, var(--color-text-primary), 400);
+    }
+
+    &-Genres {
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 5px;
+    }
+
+    @media (max-width: 460px) {
+        max-width: 100%;
+    }
 }
