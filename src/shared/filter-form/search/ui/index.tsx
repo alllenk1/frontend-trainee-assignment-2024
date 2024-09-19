@@ -14,9 +14,12 @@ export const Search = () => {
     const [searchQuery, setSearchQuery] = useState<string>('');
     const [debouncedQuery, setDebouncedQuery] = useState<string>(searchQuery);
 
-    const { data, isLoading } = useSearchMoviesQuery(debouncedQuery, {
-        skip: debouncedQuery.trim().length === 0
-    });
+    const { data: dataSearchQuery, isLoading: isLoadingSearchQuery } =
+        useSearchMoviesQuery(debouncedQuery, {
+            skip: debouncedQuery.trim().length === 0
+        });
+
+    console.log(dataSearchQuery);
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -42,8 +45,9 @@ export const Search = () => {
             />
             {debouncedQuery.trim().length > 0 && (
                 <div className={cnSearch('Results')}>
-                    {!isLoading && data?.docs.length > 0 ? (
-                        data?.docs.map(
+                    {!isLoadingSearchQuery &&
+                    dataSearchQuery?.docs.length > 0 ? (
+                        dataSearchQuery?.docs.map(
                             (item: MovieProps) =>
                                 item.name && (
                                     <Link

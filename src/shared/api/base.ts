@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import type { MoviesResponseType } from '@/shared/movie-card/types';
-import { FilterParamsType } from '@/shared/movie-card/types';
+import { FilterParamsType, MovieProps } from '@/shared/movie-card/types';
 
 export const baseApi = createApi({
     reducerPath: 'baseApi',
@@ -23,7 +23,7 @@ export const baseApi = createApi({
             }
         >({
             query: ({ currentPage = 1, limit = 10, params = [] }) => {
-                let url = `v1.4/movie?page=${currentPage}&limit=${limit}&lists=top250`;
+                let url = `v1.4/movie?page=${currentPage}&limit=${limit}&lists=top250&lists=series-top250`;
 
                 if (params.length > 0) {
                     url = params.reduce((acc, param) => {
@@ -40,6 +40,9 @@ export const baseApi = createApi({
         }),
         searchOptions: builder.query({
             query: (type) => `v1/movie/possible-values-by-field?field=${type}`
+        }),
+        randomTitle: builder.query<MovieProps, number>({
+            query: (trigger) => `v1.4/movie/random`
         })
     })
 });
@@ -47,5 +50,6 @@ export const baseApi = createApi({
 export const {
     useShowMoviesQuery,
     useSearchMoviesQuery,
-    useSearchOptionsQuery
+    useSearchOptionsQuery,
+    useRandomTitleQuery
 } = baseApi;
