@@ -19,8 +19,6 @@ export const Search = () => {
             skip: debouncedQuery.trim().length === 0
         });
 
-    console.log(dataSearchQuery);
-
     useEffect(() => {
         const handler = setTimeout(() => {
             setDebouncedQuery(searchQuery);

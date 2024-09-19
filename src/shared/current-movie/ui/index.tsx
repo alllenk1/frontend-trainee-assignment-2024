@@ -39,7 +39,7 @@ export const CurrentMovie = ({
                     <p
                         className={cnCurrentMovie('NameAndYear')}
                     >{`${name}, ${year}`}</p>
-                    <p className={cnCurrentMovie('AltNameAndRaiting')}>
+                    <p className={cnCurrentMovie('AltNameAndRating')}>
                         {`${alternativeName}, ${ageRating}+`}
                     </p>
                     <p className={cnCurrentMovie('Description')}>

@@ -1,28 +1,28 @@
 export type MoviesGenre = {
-  name: string;
+    name: string;
 };
 
 export type MoviesRatings = {
-  imdb: number;
-  kp: number;
+    imdb: number;
+    kp: number;
 };
 
 export type MovieProps = {
-  id: number;
-  poster: any;
-  name: string;
-  shortDescription: string;
-  rating?: MoviesRatings;
-  genres?: MoviesGenre[];
-  year?: number;
+    id: number;
+    poster: any;
+    name: string;
+    shortDescription: string;
+    rating?: MoviesRatings;
+    genres?: MoviesGenre[];
+    year?: number;
 };
 
 export type MoviesResponseType = {
-  docs: MovieProps[];
-  pages: number;
+    docs: MovieProps[];
+    pages: number;
 };
 
 export type FilterParamsType = {
-  option: string;
-  value: string;
+    option: string;
+    value: string;
 };

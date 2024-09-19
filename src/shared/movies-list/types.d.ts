@@ -1,5 +1,6 @@
 import { MovieProps } from '../movie-card/types';
 
-type MoviesListProps = {
-  movies: MovieProps[];
+export type MoviesListProps = {
+    movies: MovieProps[];
+    isLoadingMovies: boolean;
 };

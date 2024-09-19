@@ -1,7 +1,7 @@
 import { cn } from '@bem-react/classname';
 import { Link } from 'react-router-dom';
 
-import { Raiting } from './raiting';
+import { Rating } from './rating';
 import { Genre } from './genre';
 
 import type { MovieProps } from '../types';
@@ -24,10 +24,11 @@ export const MovieCard = ({
                     className={cnMovieCard('Poster')}
                     src={poster}
                     alt="movie's poster"
+                    loading="lazy"
                 />
                 <p className={cnMovieCard('MainInfo')}>{name}</p>
                 <p className={cnMovieCard('Description')}>{shortDescription}</p>
-                {rating && <Raiting imdb={rating.imdb} kp={rating.kp} />}
+                {rating && <Rating imdb={rating.imdb} kp={rating.kp} />}
                 <div className={cnMovieCard('Genres')}>
                     {genres &&
                         genres

@@ -1,0 +1,23 @@
+@import '@styles/declarations/mixins';
+
+.Rating {
+    display: flex;
+    column-gap: 10px;
+
+    width: 100%;
+}
+
+.Rating-Block {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+
+    .Rating-Icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .Rating-Value {
+        @include font(12px, var(--color-text-primary), 400);
+    }
+}
