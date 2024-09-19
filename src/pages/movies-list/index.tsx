@@ -1,50 +1,68 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { type ChangeEvent, useEffect, useState } from 'react';
+import { cn } from '@bem-react/classname';
 
-import type { MovieProps } from '@/shared/movie-card/types';
+import { useShowMoviesQuery } from '@/shared/api';
+import type { FilterParamsType, MovieProps } from '@/shared/movie-card/types';
 import { MoviesList } from '@/shared/movies-list';
 import { Pagination } from '@/shared/pagination';
+import { FilterForm } from '@/shared/filter-form';
 
-export function MoviesListPage() {
-  const [movies, setMovies] = useState<MovieProps[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
+import './index.scss';
 
-  const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      'X-API-KEY': process.env.TOKEN
-    }
-  };
+export const MoviesListPage = () => {
+    const cnMoviesListPage = cn('MoviesListPage');
 
-  useEffect(() => {
-    fetch(
-      `https://api.kinopoisk.dev/v1.4/movie?page=${currentPage}&limit=10&lists=top250`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setMovies(response.docs);
-        setTotalPages(response.pages);
-      })
-      .catch((err) => console.error(err));
-  }, [currentPage]);
+    const [movies, setMovies] = useState<MovieProps[]>([]);
+    const [filterParams, setFilterParams] = useState<FilterParamsType[]>([]);
+    const [moviesLimit, setMoviesLimit] = useState('10');
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+    const {
+        data: dataMoviesList = { docs: [], pages: 1 },
+        isLoading: isLoadingMoviesList
+    } = useShowMoviesQuery({
+        currentPage,
+        limit: moviesLimit,
+        params: filterParams
+    });
 
-  return (
-    <>
-      {movies.length > 0 && <MoviesList movies={movies} />}
-      {totalPages > 0 && (
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
-      )}
-    </>
-  );
-}
+    useEffect(() => {
+        if (!isLoadingMoviesList && dataMoviesList) {
+            setMovies(dataMoviesList.docs);
+            setTotalPages(dataMoviesList.pages);
+        }
+    }, [dataMoviesList, isLoadingMoviesList]);
+
+    const handleChangeFilterParams = (params: FilterParamsType) => {
+        const { option, value } = params;
+
+        setFilterParams((prev) => [
+            ...prev.filter((param) => param.option !== option),
+            { option, value }
+        ]);
+    };
+
+    const handleChangeLimit = (event: ChangeEvent<HTMLInputElement>) => {
+        setMoviesLimit(event.target.value);
+    };
+
+    return (
+        <div className={cnMoviesListPage('')}>
+            <div className={cnMoviesListPage('Content')}>
+                <FilterForm
+                    onChangeParams={handleChangeFilterParams}
+                    onChangeLimit={handleChangeLimit}
+                />
+                {movies.length > 0 && <MoviesList movies={movies} />}
+            </div>
+            {totalPages > 0 && (
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    onPageChange={(page: number) => setCurrentPage(page)}
+                />
+            )}
+        </div>
+    );
+};

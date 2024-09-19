@@ -1,0 +1,14 @@
+@import '@styles/declarations/mixins';
+
+.FilterForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  min-width: 250px;
+  height: 400px;
+
+  padding: 15px;
+
+  @include font(12px, var(--color-text-primary), 400);
+}

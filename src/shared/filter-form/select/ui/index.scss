@@ -1,0 +1,18 @@
+@import '@styles/declarations/mixins';
+
+.Select {
+    width: 100%;
+
+    padding: 5px 6px;
+
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-big);
+
+    &-Input {
+        width: 100%;
+    }
+
+    &_placeholder {
+        @include font(12px, var(--color-text-secondary), 400);
+    }
+}

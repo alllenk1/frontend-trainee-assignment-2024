@@ -14,4 +14,15 @@ export type MovieProps = {
   shortDescription: string;
   rating?: MoviesRatings;
   genres?: MoviesGenre[];
+  year?: number;
+};
+
+export type MoviesResponseType = {
+  docs: MovieProps[];
+  pages: number;
+};
+
+export type FilterParamsType = {
+  option: string;
+  value: string;
 };

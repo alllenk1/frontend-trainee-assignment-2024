@@ -1,8 +1,9 @@
 .MoviesList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: start;
   gap: 20px;
 
-  width: 60%;
+  max-width: 1200px;
   margin: 0 auto;
 }

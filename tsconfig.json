@@ -10,6 +10,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "baseUrl": ".",
+        "strict": true,
+        "strictNullChecks": true,
         "paths": {
             "@/*": ["src/*"],
             "@styles/*": ["src/app/styles/*"]
