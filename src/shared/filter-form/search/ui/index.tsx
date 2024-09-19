@@ -43,28 +43,27 @@ export const Search = () => {
             />
             {debouncedQuery.trim().length > 0 && (
                 <div className={cnSearch('Results')}>
-                    {!isLoadingSearchQuery &&
-                    dataSearchQuery?.docs.length > 0 ? (
-                        dataSearchQuery?.docs.map(
-                            (item: MovieProps) =>
-                                item.name && (
+                    {!isLoadingSearchQuery ? (
+                        dataSearchQuery && dataSearchQuery.docs.length > 0 ? (
+                            dataSearchQuery.docs.map((item: MovieProps) =>
+                                item.name ? (
                                     <Link
                                         key={item.id}
                                         to={`/movie/${item.id}`}
                                     >
-                                        <div
-                                            key={item.id}
-                                            className={cnSearch('Result')}
-                                        >
+                                        <div className={cnSearch('Result')}>
                                             {`${item.name} (${item.year})`}
                                         </div>
                                     </Link>
-                                )
+                                ) : null
+                            )
+                        ) : (
+                            <div className={cnSearch('Result')}>
+                                Нет результатов
+                            </div>
                         )
                     ) : (
-                        <div className={cnSearch('Result')}>
-                            Нет результатов
-                        </div>
+                        <div className={cnSearch('Result')}>Ищем...</div>
                     )}
                 </div>
             )}

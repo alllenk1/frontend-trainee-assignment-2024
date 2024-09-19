@@ -18,6 +18,8 @@ export const MoviesListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    console.log('filterParams', filterParams);
+
     const { data: dataMoviesList, isLoading: isLoadingMoviesList } =
         useShowMoviesQuery({
             currentPage,
@@ -27,8 +29,8 @@ export const MoviesListPage = () => {
 
     useEffect(() => {
         if (!isLoadingMoviesList && dataMoviesList) {
-            setMovies(dataMoviesList.docs || []);
-            setTotalPages(dataMoviesList.pages || 0);
+            setMovies(dataMoviesList.docs);
+            setTotalPages(dataMoviesList.pages);
         }
     }, [dataMoviesList, isLoadingMoviesList]);
 
@@ -52,10 +54,13 @@ export const MoviesListPage = () => {
                     onChangeParams={handleChangeFilterParams}
                     onChangeLimit={handleChangeLimit}
                 />
-                <MoviesList
-                    movies={movies}
-                    isLoadingMovies={isLoadingMoviesList}
-                />
+                {movies !== null && (
+                    <MoviesList
+                        movies={movies}
+                        isLoadingMovies={isLoadingMoviesList}
+                        filterParams={filterParams}
+                    />
+                )}
             </div>
             {totalPages > 0 && (
                 <Pagination

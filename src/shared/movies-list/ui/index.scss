@@ -1,9 +1,16 @@
-.MoviesList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  gap: 20px;
+@import '@styles/declarations/mixins';
 
-  max-width: 1200px;
-  margin: 0 auto;
+.MoviesList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 20px;
+
+    width: 1000px;
+
+    &-Empty {
+        margin: 55px auto;
+
+        @include font(24px, var(--color-text-primary), 600);
+    }
 }

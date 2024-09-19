@@ -7,11 +7,18 @@ import type { MovieProps } from '@/shared/movie-card/types';
 import type { MoviesListProps } from '../types';
 import './index.scss';
 
-export const MoviesList = ({ movies, isLoadingMovies }: MoviesListProps) => {
+export const MoviesList = ({
+    movies,
+    isLoadingMovies,
+    filterParams
+}: MoviesListProps) => {
     const cnMoviesList = cn('MoviesList');
 
     return (
         <div className={cnMoviesList('')}>
+            {filterParams.length > 0 && movies.length === 0 && (
+                <p className={cnMoviesList('Empty')}>Ничего не нашли :(</p>
+            )}
             {isLoadingMovies ? (
                 <>
                     {Array.from({ length: 8 }, (_, index) => (
