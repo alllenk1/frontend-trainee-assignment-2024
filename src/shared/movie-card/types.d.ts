@@ -1,5 +1,7 @@
 export type MoviesGenre = {
     name: string;
+
+    onChangeFilterParams: (params: FilterParamsType) => void;
 };
 
 export type MoviesRatings = {
@@ -9,12 +11,16 @@ export type MoviesRatings = {
 
 export type MovieProps = {
     id: number;
-    poster: any;
+    poster: {
+        url: string;
+    };
     name: string;
     shortDescription: string;
     rating?: MoviesRatings;
     genres?: MoviesGenre[];
     year?: number;
+
+    onChangeFilterParams: (params: FilterParamsType) => void;
 };
 
 export type MoviesResponseType = {

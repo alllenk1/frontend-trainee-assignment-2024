@@ -13,7 +13,8 @@ export const MovieCard = ({
     name,
     shortDescription,
     rating,
-    genres
+    genres,
+    onChangeFilterParams
 }: MovieProps) => {
     const cnMovieCard = cn('MovieCard');
 
@@ -22,7 +23,7 @@ export const MovieCard = ({
             <div className={cnMovieCard('')}>
                 <img
                     className={cnMovieCard('Poster')}
-                    src={poster}
+                    src={poster.url}
                     alt="movie's poster"
                     loading="lazy"
                 />
@@ -34,7 +35,11 @@ export const MovieCard = ({
                         genres
                             .slice(0, 3)
                             .map((genre) => (
-                                <Genre key={genre.name} name={genre.name} />
+                                <Genre
+                                    key={genre.name}
+                                    name={genre.name}
+                                    onChangeFilterParams={onChangeFilterParams}
+                                />
                             ))}
                 </div>
             </div>

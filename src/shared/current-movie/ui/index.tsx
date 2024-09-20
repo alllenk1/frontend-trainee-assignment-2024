@@ -14,7 +14,6 @@ export const CurrentMovie = ({
     ageRating,
     description,
     poster,
-    videos,
     persons
 }: CurrentMovieProps) => {
     const cnCurrentMovie = cn('CurrentMovie');
@@ -28,12 +27,6 @@ export const CurrentMovie = ({
                         src={poster.url}
                         alt="movie's poster"
                     />
-                    {videos.trailers.length > 0 && (
-                        <video
-                            className={cnCurrentMovie('Trailer')}
-                            src={videos.trailer}
-                        ></video>
-                    )}
                 </div>
                 <div className={cnCurrentMovie('Info')}>
                     <p
