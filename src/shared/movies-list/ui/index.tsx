@@ -10,7 +10,8 @@ import './index.scss';
 export const MoviesList = ({
     movies,
     isLoadingMovies,
-    filterParams
+    filterParams,
+    onChangeFilterParams
 }: MoviesListProps) => {
     const cnMoviesList = cn('MoviesList');
 
@@ -32,9 +33,10 @@ export const MoviesList = ({
                         key={movie.id}
                         name={movie.name}
                         shortDescription={movie.shortDescription}
-                        poster={movie.poster.url}
+                        poster={movie.poster}
                         rating={movie.rating}
                         genres={movie.genres}
+                        onChangeFilterParams={onChangeFilterParams}
                     />
                 ))
             )}

@@ -18,8 +18,6 @@ export const MoviesListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
-    console.log('filterParams', filterParams);
-
     const { data: dataMoviesList, isLoading: isLoadingMoviesList } =
         useShowMoviesQuery({
             currentPage,
@@ -59,6 +57,7 @@ export const MoviesListPage = () => {
                         movies={movies}
                         isLoadingMovies={isLoadingMoviesList}
                         filterParams={filterParams}
+                        onChangeFilterParams={handleChangeFilterParams}
                     />
                 )}
             </div>

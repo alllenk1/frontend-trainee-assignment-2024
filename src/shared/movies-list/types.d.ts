@@ -1,7 +1,9 @@
-import { MovieProps } from '../movie-card/types';
+import { FilterParamsType, MovieProps } from '../movie-card/types';
 
 export type MoviesListProps = {
     movies: MovieProps[];
     isLoadingMovies: boolean;
-    filterParams: any;
+    filterParams: FilterParamsType[];
+
+    onChangeFilterParams: (params: FilterParamsType) => void;
 };
