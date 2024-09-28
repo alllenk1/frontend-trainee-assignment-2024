@@ -8,6 +8,9 @@
 1. Клонируйте репозиторий:
 
    `git clone https://github.com/alllenk1/frontend-trainee-assignment-2024`
+2. Перейдите в папку проекта:
+
+   `cd frontend-trainee-assignment-2024`
 3. Установите зависимости:
 
    `npm install`
