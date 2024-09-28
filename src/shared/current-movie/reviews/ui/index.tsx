@@ -63,7 +63,7 @@ export const Reviews = ({ movieId }: ReviewsProps) => {
                 ) : (
                     <EmptyContent />
                 )}
-                {data.docs.length > 1 && (
+                {data.docs.length > 0 && (
                     <Pagination
                         totalPages={data.pages}
                         currentPage={currentPage}

@@ -19,7 +19,12 @@ export const Pagination = ({
 
     const handlePageChange = (page: number) => {
         onPageChange(page);
-        if (toTop) window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        if (toTop) {
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 0);
+        }
     };
 
     return (
