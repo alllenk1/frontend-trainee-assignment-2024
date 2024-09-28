@@ -1,0 +1,40 @@
+@import '@styles/declarations/mixins';
+
+.Actors-Content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 5px;
+
+    width: 100%;
+}
+
+.Actors-Actor {
+    width: 9.5%;
+
+    @media (max-width: 1150px) {
+        width: 130px;
+    }
+}
+
+.Actors-Photo {
+    margin-bottom: 5px;
+
+    width: 100%;
+    height: auto;
+    min-height: 150px;
+
+    border-radius: 5px;
+    object-fit: cover;
+
+    @media (max-width: 1150px) {
+        height: 200px;
+        width: auto;
+    }
+}
+
+.Actors-Name {
+    text-align: center;
+
+    @include font(12px, var(--color-text-primary), 600);
+}

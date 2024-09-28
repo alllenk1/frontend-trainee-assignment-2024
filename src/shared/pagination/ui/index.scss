@@ -1,10 +1,16 @@
+@import '@styles/declarations/mixins';
+
 .Pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 
-    margin: 20px 0;
+    margin-top: 20px;
+
+    &_secondary {
+        gap: 5px;
+    }
 
     &-Button {
         display: flex;
@@ -25,17 +31,54 @@
             color: var(--color-text-white);
             background-color: var(--color-accent);
         }
+
+        &_secondary {
+            width: 30px;
+            height: 30px;
+
+            border-radius: 50%;
+            border: none;
+
+            @include font(10px, var(--color-primary), 400);
+
+            &:hover {
+                background-color: var(--color-card-bg);
+
+                @include font(10px, var(--color-primary), 400);
+            }
+        }
     }
 
     &-Start,
     &-Next {
         cursor: pointer;
+
+        &_secondary {
+            @include font(12px, var(--color-primary), 400);
+        }
     }
 
-    &-Start {
+    &-Start,
+    &-Next {
         &_disabled {
             cursor: auto;
             color: transparent;
         }
     }
+
+    &-Start {
+        @media (max-width: 850px) {
+            &_disabled {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 850px) {
+        justify-content: left;
+    }
+}
+
+.Pagination-Button_active.Pagination-Button_secondary {
+    background-color: var(--color-card-bg);
 }

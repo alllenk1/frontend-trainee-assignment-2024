@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 
-import { useSearchOptionsQuery } from '@/shared/api';
+import { useGetSearchOptionsQuery } from '@/shared/api';
 
 import { Search } from '../search';
 import { Select } from '../select';
@@ -20,11 +20,11 @@ export const FilterForm = memo(
         const {
             data: dataCountriesOptions = [],
             isLoading: isLoadingCountriesOptions
-        } = useSearchOptionsQuery('countries.name');
+        } = useGetSearchOptionsQuery('countries.name');
         const {
             data: dataGenresOptions = [],
             isLoading: isLoadingGenresOptions
-        } = useSearchOptionsQuery('genres.name');
+        } = useGetSearchOptionsQuery('genres.name');
 
         useEffect(() => {
             if (!isLoadingCountriesOptions && !isLoadingGenresOptions) {

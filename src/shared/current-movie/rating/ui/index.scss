@@ -1,0 +1,46 @@
+@import '@styles/declarations/mixins';
+
+.Rating {
+    display: flex;
+    align-items: center;
+
+    &-ProgressBar {
+        width: 50%;
+        height: 25px;
+
+        overflow: hidden;
+        border: 1px solid var(--color-card-border);
+        border-radius: var(--radius-small);
+
+        @media (max-width: 850px) {
+            width: 100%;
+        }
+    }
+
+    &-Percent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+
+        @include font(12px, var(--color-text-primary), 400);
+
+        &_positive {
+            background-color: #e3fbe2;
+        }
+
+        &_neutral {
+            background-color: var(--color-card-bg);
+        }
+
+        &_negative {
+            background-color: #ffe5dd;
+        }
+    }
+
+    &-Img {
+        width: 25px;
+        height: 25px;
+    }
+}

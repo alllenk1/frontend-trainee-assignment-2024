@@ -8,7 +8,9 @@ import './index.scss';
 export const Pagination = ({
     totalPages,
     currentPage,
-    onPageChange
+    onPageChange,
+    toTop,
+    type = 'primary'
 }: PaginationProps) => {
     const cnPagination = cn('Pagination');
 
@@ -17,14 +19,19 @@ export const Pagination = ({
 
     const handlePageChange = (page: number) => {
         onPageChange(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (toTop) window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
-        <div className={cnPagination('')}>
+        <div
+            className={cnPagination('', {
+                secondary: type === 'secondary'
+            })}
+        >
             <button
                 className={cnPagination('Start', {
-                    disabled: totalPages <= 3 || currentPage <= 3
+                    disabled: totalPages <= 5 || currentPage <= 3,
+                    secondary: type === 'secondary'
                 })}
                 disabled={totalPages <= 3 || currentPage <= 3}
                 onClick={() => handlePageChange(1)}
@@ -35,21 +42,24 @@ export const Pagination = ({
                 <button
                     key={page}
                     className={cnPagination('Button', {
-                        active: currentPage === page
+                        active: currentPage === page,
+                        secondary: type === 'secondary'
                     })}
                     onClick={() => handlePageChange(page)}
                 >
                     {page}
                 </button>
             ))}
-            {totalPages !== currentPage && (
-                <button
-                    className={cnPagination('Next')}
-                    onClick={() => handlePageChange(currentPage + 1)}
-                >
-                    дальше
-                </button>
-            )}
+            <button
+                className={cnPagination('Next', {
+                    disabled: totalPages === currentPage,
+                    secondary: type === 'secondary'
+                })}
+                disabled={totalPages === currentPage}
+                onClick={() => handlePageChange(currentPage + 1)}
+            >
+                дальше
+            </button>
         </div>
     );
 };

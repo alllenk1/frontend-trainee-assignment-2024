@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import type { MoviesResponseType } from '@/shared/movie-card/types';
-import { FilterParamsType, MovieProps } from '@/shared/movie-card/types';
+import { FilterParamsType } from '@/shared/movie-card/types';
 
 export const baseApi = createApi({
     reducerPath: 'baseApi',
@@ -14,7 +14,7 @@ export const baseApi = createApi({
         }
     }),
     endpoints: (builder) => ({
-        showMovies: builder.query<
+        getShowMovies: builder.query<
             MoviesResponseType,
             {
                 currentPage?: number;
@@ -23,7 +23,7 @@ export const baseApi = createApi({
             }
         >({
             query: ({ currentPage = 1, limit = 10, params = [] }) => {
-                let url = `v1.4/movie?page=${currentPage}&limit=${limit}&lists=top250&lists=series-top250`;
+                let url = `v1.4/movie?page=${currentPage}&limit=${limit}&sortField=top250&sortType=-1&lists=top500`;
 
                 if (params.length > 0) {
                     url = params.reduce((acc, param) => {
@@ -35,21 +35,39 @@ export const baseApi = createApi({
                 return url;
             }
         }),
-        searchMovies: builder.query({
+        getShowMovie: builder.query({
+            query: (movieId) =>
+                `https://api.kinopoisk.dev/v1.4/movie/${movieId}`
+        }),
+        getSearchMovies: builder.query({
             query: (query) => `v1.4/movie/search?page=1&limit=10&query=${query}`
         }),
-        searchOptions: builder.query({
+        getSearchOptions: builder.query({
             query: (type) => `v1/movie/possible-values-by-field?field=${type}`
         }),
-        randomTitle: builder.query<MovieProps, number>({
-            query: (trigger) => `v1.4/movie/random`
+        getRandomTitle: builder.query({
+            query: (isTrigger) =>
+                'v1.4/movie/random?notNullFields=name&notNullFields=description&notNullFields=poster.url'
+        }),
+        getSeasonAndEpisodes: builder.query({
+            query: (movieId) => `v1.4/season?page=1&limit=10&movieId=${movieId}`
+        }),
+        getReviews: builder.query({
+            query: ({ currentPage = 1, movieId }) =>
+                `v1.4/review?page=${currentPage}&limit=1&movieId=${movieId}`
+        }),
+        getPosters: builder.query({
+            query: (movieId) => `v1.4/image?page=1&limit=30&movieId=${movieId}`
         })
     })
 });
 
 export const {
-    useShowMoviesQuery,
-    useSearchMoviesQuery,
-    useSearchOptionsQuery,
-    useRandomTitleQuery
+    useGetShowMoviesQuery,
+    useGetShowMovieQuery,
+    useGetSearchMoviesQuery,
+    useGetSearchOptionsQuery,
+    useGetRandomTitleQuery,
+    useGetReviewsQuery,
+    useGetPostersQuery
 } = baseApi;

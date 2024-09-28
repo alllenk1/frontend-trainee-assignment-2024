@@ -1,7 +1,7 @@
 import { type ChangeEvent, useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 
-import { useShowMoviesQuery } from '@/shared/api';
+import { useGetShowMoviesQuery } from '@/shared/api';
 import type { FilterParamsType, MovieProps } from '@/shared/movie-card/types';
 import { MoviesList } from '@/shared/movies-list';
 import { Pagination } from '@/shared/pagination';
@@ -19,7 +19,7 @@ export const MoviesListPage = () => {
     const [totalPages, setTotalPages] = useState(0);
 
     const { data: dataMoviesList, isLoading: isLoadingMoviesList } =
-        useShowMoviesQuery({
+        useGetShowMoviesQuery({
             currentPage,
             limit: moviesLimit,
             params: filterParams
@@ -52,7 +52,7 @@ export const MoviesListPage = () => {
                     onChangeParams={handleChangeFilterParams}
                     onChangeLimit={handleChangeLimit}
                 />
-                {movies !== null && (
+                {movies && (
                     <MoviesList
                         movies={movies}
                         isLoadingMovies={isLoadingMoviesList}
@@ -66,6 +66,7 @@ export const MoviesListPage = () => {
                     totalPages={totalPages}
                     currentPage={currentPage}
                     onPageChange={(page: number) => setCurrentPage(page)}
+                    toTop={true}
                 />
             )}
         </div>

@@ -2,17 +2,33 @@
 
 .CurrentMovie {
     display: flex;
+    flex-direction: column;
     column-gap: 30px;
 
-    margin: 0 auto;
+    width: 1000px;
+
+    @media (max-width: 850px) {
+        width: 95%;
+    }
 }
 
 .CurrentMovie-Promo {
-    width: 30%;
+    display: flex;
+    gap: 20px;
+    width: 100%;
 
-    .CurrentMovie-Poster,
-    .CurrentMovie-Trailer {
-        width: 100%;
+    .CurrentMovie-Poster {
+        width: 25%;
+    }
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+
+        .CurrentMovie-Poster {
+            width: 250px;
+
+            margin: 0 auto;
+        }
     }
 }
 
@@ -30,30 +46,31 @@
     .CurrentMovie-AltNameAndRating {
         @include font(16px, var(--color-text-secondary), 400);
     }
-}
 
-.CurrentMovie-Splide {
-    position: relative;
-
-    margin: 0 auto;
-
-    .Splide-pagination {
+    .CurrentMovie-Ratings {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         gap: 10px;
 
-        margin-top: 10px;
+        margin-top: 20px;
     }
 
-    .Splide-page {
-        width: 10px;
-        height: 10px;
+    @media (max-width: 850px) {
+        width: 100%;
 
-        border-radius: 50%;
-        background-color: #eceef1;
+        .CurrentMovie-NameAndYear,
+        .CurrentMovie-AltNameAndRating {
+            text-align: center;
+        }
 
-        &[aria-selected='true'] {
-            background-color: black;
+        .CurrentMovie-Ratings {
+            width: 100%;
         }
     }
+}
+
+.CurrentMovie-Subtitle {
+    margin: 25px 0;
+
+    @include font(24px, var(--color-text-primary), 600);
 }

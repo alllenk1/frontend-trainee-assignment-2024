@@ -26,6 +26,8 @@ export const MovieCard = ({
                     src={poster.url}
                     alt="movie's poster"
                     loading="lazy"
+                    width="168"
+                    height="252"
                 />
                 <p className={cnMovieCard('MainInfo')}>{name}</p>
                 <p className={cnMovieCard('Description')}>{shortDescription}</p>

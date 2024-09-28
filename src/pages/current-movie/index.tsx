@@ -1,44 +1,60 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { cn } from '@bem-react/classname';
 
 import { CurrentMovie } from '@/shared/current-movie';
-import { CurrentMovieProps } from '@/shared/current-movie/types';
+import { CurrentMovieLoader } from '@/shared/current-movie/current-movie-loader';
+import { useGetShowMovieQuery } from '@/shared/api';
+
+import './index.scss';
 
 export const CurrentMoviePage = () => {
-    const { movieId } = useParams();
-    const [movie, setMovie] = useState<CurrentMovieProps>();
+    const cnCurrentMoviePage = cn('CurrentMoviePage');
 
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            'X-API-KEY': 'Y9G5S66-0AVM0RC-J3Q9Z15-N5K8YD9'
-        }
-    };
+    const { movieId } = useParams();
+
+    const { data: dataMovie, isLoading: isLoadingMovie } =
+        useGetShowMovieQuery(movieId);
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 850);
 
     useEffect(() => {
-        fetch(`https://api.kinopoisk.dev/v1.4/movie/${movieId}`, options)
-            .then((response) => response.json())
-            .then((response) => setMovie(response))
-            .catch((err) => console.error(err));
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 850);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return (
-        <>
+        <div className={cnCurrentMoviePage('')}>
             <Link to="/">
-                <h1>Назад</h1>
+                <button
+                    className={cnCurrentMoviePage('PrevButton')}
+                    onClick={() =>
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }
+                >
+                    {isMobile ? '←' : '← назад'}
+                </button>
             </Link>
-            {movie && (
+            {!isLoadingMovie && movieId ? (
                 <CurrentMovie
-                    name={movie.name}
-                    alternativeName={movie.alternativeName}
-                    year={movie.year}
-                    ageRating={movie.ageRating}
-                    description={movie.description}
-                    poster={movie.poster}
-                    persons={movie.persons}
+                    id={movieId}
+                    name={dataMovie.name}
+                    alternativeName={dataMovie.alternativeName}
+                    year={dataMovie.year}
+                    ageRating={dataMovie.ageRating}
+                    description={dataMovie.description}
+                    poster={dataMovie.poster}
+                    persons={dataMovie.persons}
+                    rating={dataMovie.rating}
+                    similarMovies={dataMovie.similarMovies}
                 />
+            ) : (
+                <CurrentMovieLoader />
             )}
-        </>
+        </div>
     );
 };

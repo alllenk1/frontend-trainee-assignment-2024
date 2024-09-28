@@ -2,7 +2,7 @@ import { type ChangeEvent, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 
-import { useSearchMoviesQuery } from '@/shared/api';
+import { useGetSearchMoviesQuery } from '@/shared/api';
 import { MovieProps } from '@/shared/movie-card/types';
 
 import { Input } from '../../input';
@@ -15,7 +15,7 @@ export const Search = () => {
     const [debouncedQuery, setDebouncedQuery] = useState<string>(searchQuery);
 
     const { data: dataSearchQuery, isLoading: isLoadingSearchQuery } =
-        useSearchMoviesQuery(debouncedQuery, {
+        useGetSearchMoviesQuery(debouncedQuery, {
             skip: debouncedQuery.trim().length === 0
         });
 
