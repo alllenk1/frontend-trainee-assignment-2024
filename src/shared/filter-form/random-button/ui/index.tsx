@@ -2,33 +2,25 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 
-import { useRandomTitleQuery } from '@/shared/api';
-import { MovieProps } from '@/shared/movie-card/types';
+import { useGetRandomTitleQuery } from '@/shared/api';
 
 import './index.scss';
 
 export function RandomButton() {
     const cnRandomButton = cn('RandomButton');
 
-    const [trigger, setTrigger] = useState(0);
+    const [triggerKey, setTriggerKey] = useState(Date.now());
 
-    const { data: dataRandomTitle, isLoading: isLoadingRandomTitle } =
-        useRandomTitleQuery(trigger) as {
-            data: MovieProps | undefined;
-            isLoading: boolean;
-        };
+    const { data, isLoading } = useGetRandomTitleQuery(triggerKey);
 
-    const handleChangeTrigger = () => {
-        setTrigger((prev) => prev + 1);
-    };
-
-    return isLoadingRandomTitle ? (
+    return isLoading ? (
         <div className={cnRandomButton('')}>Загрузка...</div>
     ) : (
-        <Link to={`/movie/${dataRandomTitle?.id}`}>
-            <div className={cnRandomButton('')} onClick={handleChangeTrigger}>
-                Случайный фильм!
-            </div>
+        <Link
+            to={`/movie/${data.id}`}
+            onClick={() => setTriggerKey(Date.now())}
+        >
+            <div className={cnRandomButton('')}>Случайный фильм!</div>
         </Link>
     );
 }

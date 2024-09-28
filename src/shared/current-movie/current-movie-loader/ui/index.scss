@@ -1,0 +1,112 @@
+@import '@styles/declarations/mixins';
+
+.CurrentMovieLoader {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    width: 1000px;
+
+    padding: 15px;
+
+    border-radius: var(--radius-big);
+    background-color: var(--color-card-bg);
+    box-shadow: 3px 3px 25px var(--color-card-border);
+
+    transition: var(--transition-primary);
+
+    @include skeletonAnimationFlare();
+
+    &-Main {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    &-Poster,
+    &-Title,
+    &-Subtitle,
+    &-Description {
+        border-radius: var(--radius-small);
+        background-color: var(--color-skeleton-content);
+    }
+
+    &-Poster {
+        width: 25%;
+        height: 252px;
+    }
+
+    &-About {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        width: 70%;
+    }
+
+    &-Title {
+        height: 1.5rem;
+        width: 75%;
+    }
+
+    &-Subtitle {
+        height: 1.5rem;
+        width: 50%;
+    }
+
+    &-Description {
+        height: 10rem;
+        width: 100%;
+    }
+
+    &-Secondary {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    //&-Poster,
+    //&-MainInfo,
+    //&-Description {
+    //    width: 100%;
+    //
+    //    margin: 0 auto;
+    //
+    //    border-radius: var(--radius-small);
+    //    background-color: var(--color-skeleton-content);
+    //}
+    //
+    //&-Poster {
+    //    height: auto;
+    //    min-height: 252px;
+    //}
+    //
+    //&-MainInfo {
+    //    height: 1.5rem;
+    //}
+    //
+    //&-Description {
+    //    height: 4rem;
+    //}
+    //
+    //&-Ratings,
+    //&-Genres {
+    //    display: flex;
+    //    gap: 5px;
+    //}
+    //
+    //&-Rating,
+    //&-Genre {
+    //    height: 1.5rem;
+    //
+    //    background-color: var(--color-skeleton-content);
+    //    border-radius: var(--radius-small);
+    //}
+    //
+    //&-Rating {
+    //    width: 35%;
+    //}
+    //
+    //&-Genre {
+    //    width: 45%;
+    //}
+}

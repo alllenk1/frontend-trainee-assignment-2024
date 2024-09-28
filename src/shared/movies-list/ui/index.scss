@@ -13,4 +13,8 @@
 
         @include font(24px, var(--color-text-primary), 600);
     }
+
+    @media (max-width: 850px) {
+        width: 100%;
+    }
 }

@@ -1,0 +1,15 @@
+@import '@styles/declarations/mixins';
+
+.SimilarMovies {
+    position: relative;
+
+    &-Poster {
+        height: 240px;
+        width: auto;
+
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    @include SplideArrows();
+}

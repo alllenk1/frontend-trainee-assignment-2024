@@ -1,6 +1,8 @@
 export type PaginationProps = {
-  currentPage: number;
-  totalPages: number;
+    currentPage: number;
+    totalPages: number;
+    toTop?: boolean;
+    type?: 'primary' | 'secondary';
 
-  onPageChange: (page: number) => void;
+    onPageChange: (page: number) => void;
 };

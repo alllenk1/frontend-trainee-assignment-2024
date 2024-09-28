@@ -1,6 +1,8 @@
-import type { ActorProps } from './actor/types';
+import { MoviesRatings } from '@/shared/movie-card/types';
+import { ActorType } from './actors/types';
 
 export type CurrentMovieProps = {
+    id: string;
     name: string;
     alternativeName: string;
     year: number;
@@ -9,5 +11,7 @@ export type CurrentMovieProps = {
     poster: {
         url: string;
     };
-    persons: ActorProps[];
+    persons: ActorType[];
+    rating: MoviesRatings;
+    similarMovies: CurrentMovieProps[];
 };

@@ -1,0 +1,35 @@
+@import '@styles/declarations/mixins';
+
+.Reviews-Content {
+    width: 100%;
+
+    padding: 35px;
+
+    border-radius: var(--radius-big);
+
+    &_positive {
+        background-color: #e3fbe2;
+    }
+
+    &_neutral {
+        background-color: var(--color-card-bg);
+    }
+
+    &_negative {
+        background-color: #ffe5dd;
+    }
+}
+
+.Reviews-Title {
+    @include font(18px, var(--color-text-primary), 600);
+
+    margin-bottom: 15px;
+}
+
+.Reviews-MoreDetailsButton {
+    margin-top: 15px;
+    padding: 5px 10px;
+
+    border-radius: var(--radius-small);
+    background-color: rgba(31, 31, 31, 0.1);
+}

@@ -34,6 +34,8 @@
     }
 
     &-MainInfo {
+        hyphens: auto;
+
         @include font(16px, var(--color-text-primary), 600);
     }
 
@@ -48,7 +50,7 @@
         gap: 5px;
     }
 
-    @media (max-width: 550px) {
+    @media (max-width: 850px) {
         max-width: 100%;
     }
 }
